@@ -12,7 +12,7 @@ export class SwitchesComponent implements OnInit {
   miFormulario: FormGroup = this.fb.group({
     genero: [ 'M', Validators.required ],
     notificaciones: [ true, Validators.required ],
-    condiciones: [ false, Validators.required ]
+    condiciones: [ false, Validators.requiredTrue ]
   });
 
   persona = {
@@ -23,7 +23,7 @@ export class SwitchesComponent implements OnInit {
   constructor( private fb: FormBuilder ) { }
 
   ngOnInit(): void {
-    this.miFormulario.reset( this.persona );
+    this.miFormulario.reset( {...this.persona, condiciones: true} );
   }
 
   guardar(){
