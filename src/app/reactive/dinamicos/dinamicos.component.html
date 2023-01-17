@@ -1,1 +1,59 @@
-<p>dinamicos works!</p>
+<h2>Rectivos: <small>Dinámicos</small></h2>
+<hr>
+
+<form autocomplete="off" (ngSubmit)="guardar()" [formGroup]="miFormulario" >
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Nombre</label>
+    <div class="col-sm-9">
+      <input class="form-control"
+      formControlName = "nombre"
+      type="text" placeholder="Nombre de la persona" required>
+      <span *ngIf="validarCampo('nombre')" class="text-danger" >Este campo es obligatorio</span>
+    </div>
+  </div>
+
+ <!-- Agregar Favorito -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Agregar</label>
+    <div class="col-sm-9" >
+      <div class="input-group mb-3" >
+        <input type="text" class="form-control" [formControl]="nuevoFavorito" (keyup.enter)="agregarFavorito()"
+        aria-label="Agregar juego favorito" aria-describedby="button-addon2">
+
+        <button class="btn btn-outline-secondary" (click)="agregarFavorito()"
+        type="button" id="button-addon2">Agregar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- lista de juegos -->
+
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Favoritos</label>
+    <div class="col-sm-9 mt-2" formArrayName="favoritos">
+      <div class="input-group mt-2" *ngFor="let favorito of favoritosArr.controls let i = index" >
+        <input  class="form-control" [formControlName]="i">
+        <button class="btn btn-danger" type="button" (click)="borrar(i)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row ">
+    <div class="col-sm-12">
+    <button class="btn btn-primary float-end" type="submit" >Guardar</button>
+    </div>
+  </div>
+</form>
+
+<span>Valid</span>
+<pre>{{ miFormulario.valid }}</pre>
+
+<br>
+<span>Valid</span>
+<pre>{{ miFormulario.value | json }}</pre>
+
+<span>Agregar favorito</span>
+<pre>{{ nuevoFavorito.valid | json }}</pre>
+
