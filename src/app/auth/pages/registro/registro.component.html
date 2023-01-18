@@ -4,11 +4,13 @@
     <form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="guardar()">
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Nombre</label>
+
         <div class="col-sm-9">
           <input type="text"
           class="form-control"
           placeholder="Nombre del usuario"
           formControlName="nombre">
+
           <span class="text text-danger" *ngIf="validarCampo('nombre')">
              Debe de ser en formato de nombre y apellido</span>
         </div>
@@ -17,7 +19,11 @@
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Email</label>
         <div class="col-sm-9">
-          <input type="email" class="form-control" placeholder="Email" formControlName="email">
+
+          <input type="email" class="form-control"
+                  placeholder="Email"
+                  formControlName="email">
+
           <span class="text text-danger" *ngIf="validarCampo('email')">
             El correo es obligatorio</span>
         </div>
@@ -26,7 +32,11 @@
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Username</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" placeholder="Username" formControlName="username">
+
+          <input type="text" class="form-control"
+                  placeholder="Username"
+                  formControlName="username">
+
           <span class="text text-danger" *ngIf="validarCampo('username')">
             El username es obligatorio</span>
         </div>
@@ -35,14 +45,25 @@
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Password</label>
         <div class="col-sm-9">
-          <input type="password" class="form-control" placeholder="Password">
+
+          <input type="password" class="form-control"
+                  placeholder="Password"
+                  formControlName="password">
+
+          <span class="text text-danger" *ngIf="validarCampo('password')">
+                   La contraseña debe de ser mayor a 6 caracteres.</span>
         </div>
       </div>
 
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Confirmar</label>
         <div class="col-sm-9">
-          <input type="password" class="form-control" placeholder="Confirmar password">
+          <input type="password" class="form-control"
+                  placeholder="Confirmar password"
+                  formControlName="confirmarPassword">
+
+           <span class="text text-danger" *ngIf="validarCampo('confirmarPassword')">
+                    Las contraseñas deben de ser iguales</span>
         </div>
       </div>
 
