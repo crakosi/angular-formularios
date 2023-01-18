@@ -46,6 +46,8 @@ export class SwitchesComponent implements OnInit {
     delete formValue.condiciones;
     this.persona = formValue;
 
+    console.log(this.persona);
+
   }
 
 }

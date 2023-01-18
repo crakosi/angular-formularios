@@ -1,0 +1,60 @@
+<h2>Validaciones Reactivas</h2>
+<div class="row">
+  <div class="col">
+    <form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="guardar()">
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9">
+          <input type="text"
+          class="form-control"
+          placeholder="Nombre del usuario"
+          formControlName="nombre">
+          <span class="text text-danger" *ngIf="validarCampo('nombre')">
+             Debe de ser en formato de nombre y apellido</span>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-9">
+          <input type="email" class="form-control" placeholder="Email" formControlName="email">
+          <span class="text text-danger" *ngIf="validarCampo('email')">
+            El correo es obligatorio</span>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Username</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" placeholder="Username" formControlName="username">
+          <span class="text text-danger" *ngIf="validarCampo('username')">
+            El username es obligatorio</span>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-9">
+          <input type="password" class="form-control" placeholder="Password">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Confirmar</label>
+        <div class="col-sm-9">
+          <input type="password" class="form-control" placeholder="Confirmar password">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary float-end">Guardar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<h5>Form Valid: {{ miFormulario.valid }}</h5>
+<h5> Nombre</h5>
+<pre> {{ miFormulario.controls['nombre'].errors | json }}</pre>
