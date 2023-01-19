@@ -25,7 +25,8 @@
                   formControlName="email">
 
           <span class="text text-danger" *ngIf="validarCampo('email')">
-            El correo es obligatorio</span>
+            {{ emailErrorMsg }}</span>
+
         </div>
       </div>
 

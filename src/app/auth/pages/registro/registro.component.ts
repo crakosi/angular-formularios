@@ -12,6 +12,22 @@ import { EmailValidatorService } from '../../../shared/validators/email-validato
 })
 export class RegistroComponent implements OnInit {
 
+
+
+  get emailErrorMsg(): string {
+   const errors = this.miFormulario.get('email')?.errors;
+   let message: string = '';
+   if ( errors?.['required'] ){
+      message = 'Email es obligatorio';
+   } else if ( errors?.['pattern']){
+    message = 'Email mal formado';
+   } else if( errors?.['emailRegistrado']){
+    message = 'El email ya existe';
+   }
+
+   return message;
+  }
+
   miFormulario: FormGroup = this.fb.group({
     nombre: ['',[ Validators.required, Validators.pattern( this.validatorService.nombreApellidoPatter )]],
     email:['',[ Validators.required, Validators.pattern( this.validatorService.emailPattern )], [ this.emailValidator ]],
@@ -29,14 +45,17 @@ export class RegistroComponent implements OnInit {
   ngOnInit(): void {
     this.miFormulario.reset({
       nombre: 'Ives Mejia',
-      email: 'mejia@gmail.com',
+      email: 'test1@test.com',
       username: 'Thanos'
     })
   }
 
   validarCampo( campo: string){
-    return this.miFormulario.get(campo)?.invalid && this.miFormulario.get(campo)?.touched;
+    return this.miFormulario.get(campo)?.invalid
+          && this.miFormulario.get(campo)?.touched;
   }
+
+
 
   guardar(){
     console.log(this.miFormulario.value);
