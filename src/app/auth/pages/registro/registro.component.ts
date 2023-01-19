@@ -20,9 +20,9 @@ export class RegistroComponent implements OnInit {
    if ( errors?.['required'] ){
       message = 'Email es obligatorio';
    } else if ( errors?.['pattern']){
-    message = 'Email mal formado';
+      message = 'Email mal formado';
    } else if( errors?.['emailRegistrado']){
-    message = 'El email ya existe';
+      message = 'El email ya existe';
    }
 
    return message;
